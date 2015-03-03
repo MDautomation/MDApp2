@@ -43,6 +43,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.widget.TimePicker;
+
 import android.widget.SeekBar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -56,7 +58,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.view.MenuItem;
 import android.widget.ListView;
-
+import android.widget.Spinner;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView.OnItemClickListener;
@@ -80,7 +82,8 @@ import com.example.android.common.logger.Log;
 public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBarChangeListener {
 
     private static final String TAG = "BluetoothChatFragment";
-
+    private Spinner spinner1, schedspin;
+    private Button btnSubmit;
     // Intent request codes
     private static final int REQUEST_CONNECT_DEVICE_SECURE = 1;
     private static final int REQUEST_CONNECT_DEVICE_INSECURE = 2;
@@ -91,11 +94,13 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
     SeekBar sb1, sb2, sb3, sb4;
     private int bs1, bs2, bs3, bs4;
     private int sw1, sw2, sw3, sw4;
-    // Layout Views
-    // Layout Views
+    private TextView textView, textView2,textView3,textView4;
+    private String message, message1, message2, message3;
+    private TimePicker tpicker;
     private ListView mConversationView;
     private EditText mOutEditText;
-    private Button mSendButton;
+    private int hour, minutes;
+   // private Button mSendButton;
     private Button save;
     private EditText r1, r2, r3, r4;
     private String newVar;
@@ -103,7 +108,7 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
     private String newVar2;
     private String newVar3;
     private String mConnectedDeviceName = null;
-
+    private String Days, Sched, day, sche;
     private ArrayAdapter<String> mConversationArrayAdapter;
 
     private StringBuffer mOutStringBuffer;
@@ -154,7 +159,17 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
         ((TextView) getView().findViewById(R.id.editText3)).setText("nl");
         ((TextView) getView().findViewById(R.id.editText4)).setText("nl");
 
+        addListenerOnButton();
+        addListenerOnSpinnerItemSelection();
+
     }
+    public void addListenerOnSpinnerItemSelection() {
+        spinner1 = (Spinner) getView().findViewById(R.id.spinner1);
+        schedspin = (Spinner) getView().findViewById(R.id.schedspin);
+        spinner1.setOnItemSelectedListener(new CustomonItemSelectedListener());
+        schedspin.setOnItemSelectedListener(new CustomonItemSelectedListener());
+    }
+    // get the selected dropdown list value
 
     private void updatevalues() {
 
@@ -303,13 +318,13 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         mConversationView = (ListView) view.findViewById(R.id.in);
-        mOutEditText = (EditText) view.findViewById(R.id.edit_text_out);
+       // mOutEditText = (EditText) view.findViewById(R.id.edit_text_out);
         r1 = (EditText) view.findViewById(R.id.editText);
         r2 = (EditText) view.findViewById(R.id.editText2);
         r3 = (EditText) view.findViewById(R.id.editText3);
         r4 = (EditText) view.findViewById(R.id.editText4);
 
-        mSendButton = (Button) view.findViewById(R.id.button_send);
+     //   mSendButton = (Button) view.findViewById(R.id.button_send);
         save = (Button) view.findViewById(R.id.save);
 
     }
@@ -326,7 +341,7 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
         mConversationView.setAdapter(mConversationArrayAdapter);
 
         // Initialize the compose field with a listener for the return key
-        mOutEditText.setOnEditorActionListener(mWriteListener);
+       // mOutEditText.setOnEditorActionListener(mWriteListener);
 
         save.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -334,16 +349,16 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
                 View view = getView();
                 if (null != view) {
 
-                    TextView textView = (TextView) view.findViewById(R.id.editText);
-                    String message = textView.getText().toString();
-                    TextView textView2 = (TextView) view.findViewById(R.id.editText2);
-                    String message1 = textView2.getText().toString();
-                    TextView textView3 = (TextView) view.findViewById(R.id.editText3);
-                    String message2 = textView3.getText().toString();
-                    TextView textView4 = (TextView) view.findViewById(R.id.editText4);
-                    String message3 = textView4.getText().toString();
+                    textView = (TextView) view.findViewById(R.id.editText);
+                     message = textView.getText().toString();
+                    textView2 = (TextView) view.findViewById(R.id.editText2);
+                     message1 = textView2.getText().toString();
+                    textView3 = (TextView) view.findViewById(R.id.editText3);
+                     message2 = textView3.getText().toString();
+                     textView4 = (TextView) view.findViewById(R.id.editText4);
+                     message3 = textView4.getText().toString();
 
-                        sendMessage("s"+message+message1+message2+message3);
+                        sendMessage("s"+message+message1+message2+message3+"xxxxxx");
                     try { Thread.sleep(4000); } catch (Exception e) { return ;}
 
                 }
@@ -357,9 +372,73 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
         mOutStringBuffer = new StringBuffer("");
     }
 
-    /**
-     * Makes this device discoverable.
-     */
+    public void addListenerOnButton() {
+        spinner1 = (Spinner) getView().findViewById(R.id.spinner1);
+        schedspin = (Spinner) getView().findViewById(R.id.schedspin);
+        btnSubmit = (Button) getView().findViewById(R.id.savespin);
+        tpicker =(TimePicker) getView().findViewById(R.id.timePicker);
+        btnSubmit.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                textView = (TextView) getView().findViewById(R.id.editText);
+                message = textView.getText().toString();
+                textView2 = (TextView) getView().findViewById(R.id.editText2);
+                message1 = textView2.getText().toString();
+                textView3 = (TextView) getView().findViewById(R.id.editText3);
+                message2 = textView3.getText().toString();
+                textView4 = (TextView) getView().findViewById(R.id.editText4);
+                message3 = textView4.getText().toString();
+                hour = tpicker.getCurrentHour();
+                minutes = tpicker.getCurrentMinute();
+                String hourz =Integer.toString(hour);
+                String minutez =Integer.toString(minutes);
+                Days = String.valueOf(spinner1.getSelectedItem());
+                Days.toLowerCase();
+                if(Days.equals("Sunday")){
+                    Days = "b";
+                }
+                if(Days.equals("Thursday")){
+                    Days = "k";
+                }
+                char d= Days.charAt(0);
+                Sched = String.valueOf(schedspin.getSelectedItem());
+
+                if (hourz.equals("1")) {
+                        hourz = ("01");
+                }
+                if (hourz.equals("2")) {
+                    hourz = ("02");
+                }
+                if (hourz.equals("3")) {
+                    hourz = ("03");
+                }
+                if (hourz.equals("4")) {
+                    hourz = ("04");
+                }
+                if (hourz.equals("5")) {
+                    hourz = ("05");
+                }
+                if (hourz.equals("6")) {
+                    hourz = ("06");
+                }
+                if (hourz.equals("7")) {
+                    hourz = ("07");
+                }
+                if (hourz.equals("8")) {
+                    hourz = ("08");
+                }
+                if (hourz.equals("9")) {
+                    hourz = ("09");
+                }
+
+                char c= Sched.charAt(15);
+                ((TextView) getView().findViewById(R.id.spintext)).setText("z"+message+message1+message2+message3+d+c+hour+minutez);
+                sendMessage("z"+message+message1+message2+message3+d+c+hourz+minutez);
+                try { Thread.sleep(4000); } catch (Exception e) { return ;}
+            }
+        });
+    }
 
 
     private void ensureDiscoverable() {
@@ -391,7 +470,7 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
 
             // Reset out string buffer to zero and clear the edit text field
             mOutStringBuffer.setLength(0);
-            mOutEditText.setText(mOutStringBuffer);
+           // mOutEditText.setText(mOutStringBuffer);
         }
     }
 
@@ -485,7 +564,9 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
                         ((TextView) getView().findViewById(R.id.textView18)).setText(" "+readMessage.charAt(3)+readMessage.charAt(4));
                         ((TextView) getView().findViewById(R.id.textView19)).setText(" "+readMessage.charAt(5)+readMessage.charAt(6));
                         ((TextView) getView().findViewById(R.id.textView20)).setText(" "+readMessage.charAt(7)+readMessage.charAt(8));
-
+                        ((TextView) getView().findViewById(R.id.day)).setText(" "+readMessage.charAt(9));
+                        ((TextView) getView().findViewById(R.id.schednum)).setText(" "+readMessage.charAt(10));
+                        ((TextView) getView().findViewById(R.id.time)).setText(" "+readMessage.charAt(11)+readMessage.charAt(12)+readMessage.charAt(13)+readMessage.charAt(14));
                     break;
                 case Constants.MESSAGE_DEVICE_NAME:
                     // save the connected device's name

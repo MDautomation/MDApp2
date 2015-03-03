@@ -33,6 +33,25 @@
     <string name="title_other_devices">Other Available Devices</string>
     <string name="button_scan">Scan for devices</string>
 
+
+    <string name="country_prompt">Choose a country</string>
+
+    <string-array name="sched_arrays">
+        <item>Schedule Time One</item>
+        <item>Schedule Time Two</item>
+        <item>Schedule Time Three</item>
+
+    </string-array>
+    <string-array name="country_arrays">
+        <item>Sunday</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+
+    </string-array>
     <!-- Options Menu -->
     <string name="secure_connect">Connect a device - Secure</string>
     <string name="insecure_connect">Connect a device - Insecure</string>

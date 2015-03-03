@@ -14,17 +14,22 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-    android:weightSum="1">
+                android:weightSum="1">
 
     <ListView
         android:id="@+id/in"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.85"
+        android:layout_height="150dp"
+        android:layout_weight="2"
         android:stackFromBottom="true"
         android:transcriptMode="alwaysScroll" />
 
@@ -198,23 +203,52 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Spinner
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:entries="@array/sched_arrays"
 
-        <EditText
-            android:id="@+id/edit_text_out"
+        android:id="@+id/schedspin"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_gravity="center_horizontal" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TimePicker
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_weight="1" />
+            android:id="@+id/timePicker" />
+
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/country_arrays"
+            android:prompt="@string/country_prompt"
+            android:layout_gravity="center_vertical" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
         <Button
-            android:id="@+id/button_send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/send" />
+            android:text="Schedule"
+            android:id="@+id/savespin" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="spintext"
+            android:id="@+id/spintext" />
 
     </LinearLayout>
 
@@ -256,7 +290,29 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="    nl    "
             android:id="@+id/textView20" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="nl"
+            android:id="@+id/schednum" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="nl"
+            android:id="@+id/time" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="   nl    "
+            android:id="@+id/day" />
     </LinearLayout>
 
 
 </LinearLayout>
+</ScrollView>
