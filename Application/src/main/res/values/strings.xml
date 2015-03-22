@@ -37,9 +37,10 @@
     <string name="country_prompt">Choose a country</string>
 
     <string-array name="sched_arrays">
+        <item>Update Instantly</item>
         <item>Schedule Time One</item>
         <item>Schedule Time Two</item>
-        <item>Schedule Time Three</item>
+
 
     </string-array>
     <string-array name="country_arrays">
