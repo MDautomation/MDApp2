@@ -101,7 +101,7 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
     private EditText mOutEditText;
     private int hour, minutes;
    // private Button mSendButton;
-    private Button save;
+    private Button sync;
     private EditText r1, r2, r3, r4;
     private String newVar;
     private String newVar1;
@@ -110,7 +110,7 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
     private String mConnectedDeviceName = null;
     private String Days, Sched, day, sche;
     private ArrayAdapter<String> mConversationArrayAdapter;
-
+    private String hourz, minutez;
     private StringBuffer mOutStringBuffer;
 
     private BluetoothAdapter mBluetoothAdapter = null;
@@ -158,9 +158,14 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
         ((TextView) getView().findViewById(R.id.editText2)).setText("nl");
         ((TextView) getView().findViewById(R.id.editText3)).setText("nl");
         ((TextView) getView().findViewById(R.id.editText4)).setText("nl");
-
+        tpicker =(TimePicker) getView().findViewById(R.id.timePicker);
+        hour = tpicker.getCurrentHour();
+        minutes = tpicker.getCurrentMinute();
+        hourz =Integer.toString(hour);
+        minutez =Integer.toString(minutes);
         addListenerOnButton();
         addListenerOnSpinnerItemSelection();
+        updatetime();
 
     }
     public void addListenerOnSpinnerItemSelection() {
@@ -332,9 +337,65 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
     /**
      * Set up the UI and background operations for chat.
      */
+    private void updatetime(){
+       //method that converts time
+        if (hourz.equals("1")) {
+            hourz = ("01");
+        }
+        if (hourz.equals("2")) {
+            hourz = ("02");
+        }
+        if (hourz.equals("3")) {
+            hourz = ("03");
+        }
+        if (hourz.equals("4")) {
+            hourz = ("04");
+        }
+        if (hourz.equals("5")) {
+            hourz = ("05");
+        }
+        if (hourz.equals("6")) {
+            hourz = ("06");
+        }
+        if (hourz.equals("7")) {
+            hourz = ("07");
+        }
+        if (hourz.equals("8")) {
+            hourz = ("08");
+        }
+        if (hourz.equals("9")) {
+            hourz = ("09");
+        }
+        if (minutez.equals("1")) {
+            minutez = ("01");
+        }
+        if (minutez.equals("2")) {
+            minutez = ("02");
+        }
+        if (minutez.equals("3")) {
+            minutez = ("03");
+        }
+        if (minutez.equals("4")) {
+            minutez = ("04");
+        }
+        if (minutez.equals("5")) {
+            minutez = ("05");
+        }
+        if (minutez.equals("6")) {
+            minutez = ("06");
+        }
+        if (minutez.equals("7")) {
+            minutez = ("07");
+        }
+        if (minutez.equals("8")) {
+            minutez = ("08");
+        }
+        if (minutez.equals("9")) {
+            minutez = ("09");
+        }
+    }
     private void setupChat() {
         Log.d(TAG, "setupChat()");
-
         // Initialize the array adapter for the conversation thread
         mConversationArrayAdapter = new ArrayAdapter<String>(getActivity(), R.layout.message);
         mConversationView.setAdapter(mConversationArrayAdapter);
@@ -344,10 +405,17 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
     }
 
     public void addListenerOnButton() {
-
         schedspin = (Spinner) getView().findViewById(R.id.schedspin);
         btnSubmit = (Button) getView().findViewById(R.id.savespin);
-        tpicker =(TimePicker) getView().findViewById(R.id.timePicker);
+        sync = (Button) getView().findViewById(R.id.sync);
+        sync.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updatetime();
+                sendMessage("U"+hourz+minutez);
+                try { Thread.sleep(4000); } catch (Exception e) { return ;}
+            }
+        });
         btnSubmit.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -374,64 +442,15 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
                 }
                 hour = tpicker.getCurrentHour();
                 minutes = tpicker.getCurrentMinute();
-                String hourz =Integer.toString(hour);
-                String minutez =Integer.toString(minutes);
                 Sched = String.valueOf(schedspin.getSelectedItem());
-
-                if (hourz.equals("1")) {
-                        hourz = ("01");
-                }
-                if (hourz.equals("2")) {
-                    hourz = ("02");
-                }
-                if (hourz.equals("3")) {
-                    hourz = ("03");
-                }
-                if (hourz.equals("4")) {
-                    hourz = ("04");
-                }
-                if (hourz.equals("5")) {
-                    hourz = ("05");
-                }
-                if (hourz.equals("6")) {
-                    hourz = ("06");
-                }
-                if (hourz.equals("7")) {
-                    hourz = ("07");
-                }
-                if (hourz.equals("8")) {
-                    hourz = ("08");
-                }
-                if (hourz.equals("9")) {
-                    hourz = ("09");
-                }
-                if (minutez.equals("1")) {
-                    minutez = ("01");
-                }
-                if (minutez.equals("2")) {
-                    minutez = ("02");
-                }
-                if (minutez.equals("3")) {
-                    minutez = ("03");
-                }
-                if (minutez.equals("4")) {
-                    minutez = ("04");
-                }
-                if (minutez.equals("5")) {
-                    minutez = ("05");
-                }
-                if (minutez.equals("6")) {
-                    minutez = ("06");
-                }
-                if (minutez.equals("7")) {
-                    minutez = ("07");
-                }
-                if (minutez.equals("8")) {
-                    minutez = ("08");
-                }
-                if (minutez.equals("9")) {
-                    minutez = ("09");
-                }
+                tpicker =(TimePicker) getView().findViewById(R.id.timePicker);
+                hour = tpicker.getCurrentHour();
+                minutes = tpicker.getCurrentMinute();
+                hourz =Integer.toString(hour);
+                minutez =Integer.toString(minutes);
+                addListenerOnButton();
+                addListenerOnSpinnerItemSelection();
+                updatetime();
                 char c= Sched.charAt(15);
                 if(c=='y'){
                     hourz="xx";
@@ -443,7 +462,6 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
             }
         });
     }
-
 
     private void ensureDiscoverable() {
         if (mBluetoothAdapter.getScanMode() !=
@@ -540,6 +558,7 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
                         case BluetoothChatService.STATE_CONNECTED:
                             setStatus(getString(R.string.title_connected_to, mConnectedDeviceName));
                             mConversationArrayAdapter.clear();
+
                             break;
                         case BluetoothChatService.STATE_CONNECTING:
                             setStatus(R.string.title_connecting);

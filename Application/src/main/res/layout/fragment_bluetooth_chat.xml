@@ -222,6 +222,13 @@
             android:layout_height="wrap_content"
             android:id="@+id/timePicker" />
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sync Time"
+            android:id="@+id/sync"
+            android:layout_gravity="center_vertical" />
+
     </LinearLayout>
 
     <LinearLayout
