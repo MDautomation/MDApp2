@@ -583,10 +583,10 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
 
                     // USE FOR DETERMINING ROOM TEMPERATURES SENT FROM BLUETOOTH TO PHONE
 
-                     //   ((TextView) getView().findViewById(R.id.textView17)).setText(" "+readMessage.charAt(1)+readMessage.charAt(2));
-                     //   ((TextView) getView().findViewById(R.id.textView18)).setText(" "+readMessage.charAt(3)+readMessage.charAt(4));
-                      //  ((TextView) getView().findViewById(R.id.textView19)).setText(" "+readMessage.charAt(5)+readMessage.charAt(6));
-                      //  ((TextView) getView().findViewById(R.id.textView20)).setText(" "+readMessage.charAt(7)+readMessage.charAt(8));
+                       ((TextView) getView().findViewById(R.id.r1temp)).setText(" "+readMessage.charAt(1)+readMessage.charAt(2));
+                       ((TextView) getView().findViewById(R.id.r2temp)).setText(" "+readMessage.charAt(3)+readMessage.charAt(4));
+                       ((TextView) getView().findViewById(R.id.r3temp)).setText(" "+readMessage.charAt(5)+readMessage.charAt(6));
+                       ((TextView) getView().findViewById(R.id.r4temp)).setText(" "+readMessage.charAt(7)+readMessage.charAt(8));
                        // ((TextView) getView().findViewById(R.id.day)).setText(" "+readMessage.charAt(9));
                      //   ((TextView) getView().findViewById(R.id.schednum)).setText(" "+readMessage.charAt(9));
                        // ((TextView) getView().findViewById(R.id.time)).setText(" "+readMessage.charAt(10)+readMessage.charAt(11)+readMessage.charAt(12)+readMessage.charAt(13));
