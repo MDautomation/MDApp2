@@ -278,12 +278,27 @@
             android:layout_height="wrap_content"
             android:id="@+id/timePicker" />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sync Time"
-            android:id="@+id/sync"
-            android:layout_gravity="center_vertical" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:text="Sync Time"
+                android:id="@+id/sync"
+                android:layout_gravity="center" />
+
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Switch"
+                android:id="@+id/switch5"
+                android:checked="false"
+                android:textOn="Heat"
+                android:textOff="Cool" />
+        </LinearLayout>
 
     </LinearLayout>
 
