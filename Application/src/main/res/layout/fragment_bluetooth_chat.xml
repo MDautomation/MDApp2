@@ -320,12 +320,6 @@
             android:text="Scheduled Event Times: "
             android:id="@+id/textView7" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="7:30 and 12:30"
-            android:id="@+id/textView6" />
     </LinearLayout>
 
     <LinearLayout
@@ -337,7 +331,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Room 1: 72 and nl degrees"
+            android:text="Room 1: "
             android:id="@+id/textView16" />
 
     </LinearLayout>
@@ -351,37 +345,34 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Room 2: nl and 73 degrees "
+            android:text="Room 2: "
             android:id="@+id/textView2" />
-
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="fill_parent">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Room 3: 71 and 68 degrees "
+            android:text="Room 3: "
             android:id="@+id/textView18" />
-
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="fill_parent">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Room 4: nl and nl degrees"
+            android:text="Room 4: "
             android:id="@+id/textView20" />
-
     </LinearLayout>
 
 
