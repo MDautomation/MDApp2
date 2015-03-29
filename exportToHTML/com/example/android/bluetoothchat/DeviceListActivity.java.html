@@ -1,0 +1,242 @@
+<html>
+<head>
+<title>DeviceListActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(128,128,128); font-style: italic; }
+.s1 { color: rgb(169,183,198); }
+.s2 { color: rgb(204,120,50); }
+.s3 { color: rgb(98,151,85); }
+.s4 { color: rgb(106,135,89); }
+.s5 { color: rgb(128,128,128); }
+.s6 { color: rgb(104,151,187); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+DeviceListActivity.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+
+<span class="s0">/* 
+ * Copyright (C) 2014 The Android Open Source Project 
+ * 
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at 
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0 
+ * 
+ * Unless required by applicable law or agreed to in writing, software 
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS, 
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing permissions and 
+ * limitations under the License. 
+ */</span><span class="s1"> 
+ 
+</span><span class="s2">package </span><span class="s1">com.example.android.bluetoothchat</span><span class="s2">;</span><span class="s1"> 
+ 
+</span><span class="s2">import </span><span class="s1">android.app.Activity</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.bluetooth.BluetoothAdapter</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.bluetooth.BluetoothDevice</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.content.BroadcastReceiver</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.content.Context</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.content.Intent</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.content.IntentFilter</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.os.Bundle</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.view.View</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.view.Window</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.widget.AdapterView</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.widget.ArrayAdapter</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.widget.Button</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.widget.ListView</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.widget.TextView</span><span class="s2">;</span><span class="s1"> 
+ 
+</span><span class="s2">import </span><span class="s1">com.example.android.common.logger.Log</span><span class="s2">;</span><span class="s1"> 
+ 
+</span><span class="s2">import </span><span class="s1">java.util.Set</span><span class="s2">;</span><span class="s1"> 
+ 
+</span><span class="s3">/** 
+ * This Activity appears as a dialog. It lists any paired devices and 
+ * devices detected in the area after discovery. When a device is chosen 
+ * by the user, the MAC address of the device is sent back to the parent 
+ * Activity in the result Intent. 
+ */</span><span class="s1"> 
+</span><span class="s2">public class </span><span class="s1">DeviceListActivity </span><span class="s2">extends </span><span class="s1">Activity { 
+ 
+    </span><span class="s3">/** 
+     * Tag for Log 
+     */</span><span class="s1"> 
+    </span><span class="s2">private static final </span><span class="s1">String TAG = </span><span class="s4">&quot;DeviceListActivity&quot;</span><span class="s2">;</span><span class="s1"> 
+ 
+    </span><span class="s3">/** 
+     * Return Intent extra 
+     */</span><span class="s1"> 
+    </span><span class="s2">public static </span><span class="s1">String EXTRA_DEVICE_ADDRESS = </span><span class="s4">&quot;device_address&quot;</span><span class="s2">;</span><span class="s1"> 
+ 
+    </span><span class="s3">/** 
+     * Member fields 
+     */</span><span class="s1"> 
+    </span><span class="s2">private </span><span class="s1">BluetoothAdapter mBtAdapter</span><span class="s2">;</span><span class="s1"> 
+ 
+    </span><span class="s3">/** 
+     * Newly discovered devices 
+     */</span><span class="s1"> 
+    </span><span class="s2">private </span><span class="s1">ArrayAdapter&lt;String&gt; mNewDevicesArrayAdapter</span><span class="s2">;</span><span class="s1"> 
+ 
+    @Override 
+    </span><span class="s2">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) { 
+        </span><span class="s2">super</span><span class="s1">.onCreate(savedInstanceState)</span><span class="s2">;</span><span class="s1"> 
+ 
+        </span><span class="s5">// Setup the window</span><span class="s1"> 
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS)</span><span class="s2">;</span><span class="s1"> 
+        setContentView(R.layout.activity_device_list)</span><span class="s2">;</span><span class="s1"> 
+ 
+        </span><span class="s5">// Set result CANCELED in case the user backs out</span><span class="s1"> 
+        setResult(Activity.RESULT_CANCELED)</span><span class="s2">;</span><span class="s1"> 
+ 
+        </span><span class="s5">// Initialize the button to perform device discovery</span><span class="s1"> 
+        Button scanButton = (Button) findViewById(R.id.button_scan)</span><span class="s2">;</span><span class="s1"> 
+        scanButton.setOnClickListener(</span><span class="s2">new </span><span class="s1">View.OnClickListener() { 
+            </span><span class="s2">public void </span><span class="s1">onClick(View v) { 
+                doDiscovery()</span><span class="s2">;</span><span class="s1"> 
+                v.setVisibility(View.GONE)</span><span class="s2">;</span><span class="s1"> 
+            } 
+        })</span><span class="s2">;</span><span class="s1"> 
+ 
+        </span><span class="s5">// Initialize array adapters. One for already paired devices and</span><span class="s1"> 
+        </span><span class="s5">// one for newly discovered devices</span><span class="s1"> 
+        ArrayAdapter&lt;String&gt; pairedDevicesArrayAdapter = 
+                </span><span class="s2">new </span><span class="s1">ArrayAdapter&lt;String&gt;(</span><span class="s2">this, </span><span class="s1">R.layout.device_name)</span><span class="s2">;</span><span class="s1"> 
+        mNewDevicesArrayAdapter = </span><span class="s2">new </span><span class="s1">ArrayAdapter&lt;String&gt;(</span><span class="s2">this, </span><span class="s1">R.layout.device_name)</span><span class="s2">;</span><span class="s1"> 
+ 
+        </span><span class="s5">// Find and set up the ListView for paired devices</span><span class="s1"> 
+        ListView pairedListView = (ListView) findViewById(R.id.paired_devices)</span><span class="s2">;</span><span class="s1"> 
+        pairedListView.setAdapter(pairedDevicesArrayAdapter)</span><span class="s2">;</span><span class="s1"> 
+        pairedListView.setOnItemClickListener(mDeviceClickListener)</span><span class="s2">;</span><span class="s1"> 
+ 
+        </span><span class="s5">// Find and set up the ListView for newly discovered devices</span><span class="s1"> 
+        ListView newDevicesListView = (ListView) findViewById(R.id.new_devices)</span><span class="s2">;</span><span class="s1"> 
+        newDevicesListView.setAdapter(mNewDevicesArrayAdapter)</span><span class="s2">;</span><span class="s1"> 
+        newDevicesListView.setOnItemClickListener(mDeviceClickListener)</span><span class="s2">;</span><span class="s1"> 
+ 
+        </span><span class="s5">// Register for broadcasts when a device is discovered</span><span class="s1"> 
+        IntentFilter filter = </span><span class="s2">new </span><span class="s1">IntentFilter(BluetoothDevice.ACTION_FOUND)</span><span class="s2">;</span><span class="s1"> 
+        </span><span class="s2">this</span><span class="s1">.registerReceiver(mReceiver</span><span class="s2">, </span><span class="s1">filter)</span><span class="s2">;</span><span class="s1"> 
+ 
+        </span><span class="s5">// Register for broadcasts when discovery has finished</span><span class="s1"> 
+        filter = </span><span class="s2">new </span><span class="s1">IntentFilter(BluetoothAdapter.ACTION_DISCOVERY_FINISHED)</span><span class="s2">;</span><span class="s1"> 
+        </span><span class="s2">this</span><span class="s1">.registerReceiver(mReceiver</span><span class="s2">, </span><span class="s1">filter)</span><span class="s2">;</span><span class="s1"> 
+ 
+        </span><span class="s5">// Get the local Bluetooth adapter</span><span class="s1"> 
+        mBtAdapter = BluetoothAdapter.getDefaultAdapter()</span><span class="s2">;</span><span class="s1"> 
+ 
+        </span><span class="s5">// Get a set of currently paired devices</span><span class="s1"> 
+        Set&lt;BluetoothDevice&gt; pairedDevices = mBtAdapter.getBondedDevices()</span><span class="s2">;</span><span class="s1"> 
+ 
+        </span><span class="s5">// If there are paired devices, add each one to the ArrayAdapter</span><span class="s1"> 
+        </span><span class="s2">if </span><span class="s1">(pairedDevices.size() &gt; </span><span class="s6">0</span><span class="s1">) { 
+            findViewById(R.id.title_paired_devices).setVisibility(View.VISIBLE)</span><span class="s2">;</span><span class="s1"> 
+            </span><span class="s2">for </span><span class="s1">(BluetoothDevice device : pairedDevices) { 
+                pairedDevicesArrayAdapter.add(device.getName() + </span><span class="s4">&quot;</span><span class="s2">\n</span><span class="s4">&quot; </span><span class="s1">+ device.getAddress())</span><span class="s2">;</span><span class="s1"> 
+            } 
+        } </span><span class="s2">else </span><span class="s1">{ 
+            String noDevices = getResources().getText(R.string.none_paired).toString()</span><span class="s2">;</span><span class="s1"> 
+            pairedDevicesArrayAdapter.add(noDevices)</span><span class="s2">;</span><span class="s1"> 
+        } 
+    } 
+ 
+    @Override 
+    </span><span class="s2">protected void </span><span class="s1">onDestroy() { 
+        </span><span class="s2">super</span><span class="s1">.onDestroy()</span><span class="s2">;</span><span class="s1"> 
+ 
+        </span><span class="s5">// Make sure we're not doing discovery anymore</span><span class="s1"> 
+        </span><span class="s2">if </span><span class="s1">(mBtAdapter != </span><span class="s2">null</span><span class="s1">) { 
+            mBtAdapter.cancelDiscovery()</span><span class="s2">;</span><span class="s1"> 
+        } 
+ 
+        </span><span class="s5">// Unregister broadcast listeners</span><span class="s1"> 
+        </span><span class="s2">this</span><span class="s1">.unregisterReceiver(mReceiver)</span><span class="s2">;</span><span class="s1"> 
+    } 
+ 
+    </span><span class="s3">/** 
+     * Start device discover with the BluetoothAdapter 
+     */</span><span class="s1"> 
+    </span><span class="s2">private void </span><span class="s1">doDiscovery() { 
+        Log.d(TAG</span><span class="s2">, </span><span class="s4">&quot;doDiscovery()&quot;</span><span class="s1">)</span><span class="s2">;</span><span class="s1"> 
+ 
+        </span><span class="s5">// Indicate scanning in the title</span><span class="s1"> 
+        setProgressBarIndeterminateVisibility(</span><span class="s2">true</span><span class="s1">)</span><span class="s2">;</span><span class="s1"> 
+        setTitle(R.string.scanning)</span><span class="s2">;</span><span class="s1"> 
+ 
+        </span><span class="s5">// Turn on sub-title for new devices</span><span class="s1"> 
+        findViewById(R.id.title_new_devices).setVisibility(View.VISIBLE)</span><span class="s2">;</span><span class="s1"> 
+ 
+        </span><span class="s5">// If we're already discovering, stop it</span><span class="s1"> 
+        </span><span class="s2">if </span><span class="s1">(mBtAdapter.isDiscovering()) { 
+            mBtAdapter.cancelDiscovery()</span><span class="s2">;</span><span class="s1"> 
+        } 
+ 
+        </span><span class="s5">// Request discover from BluetoothAdapter</span><span class="s1"> 
+        mBtAdapter.startDiscovery()</span><span class="s2">;</span><span class="s1"> 
+    } 
+ 
+    </span><span class="s3">/** 
+     * The on-click listener for all devices in the ListViews 
+     */</span><span class="s1"> 
+    </span><span class="s2">private </span><span class="s1">AdapterView.OnItemClickListener mDeviceClickListener 
+            = </span><span class="s2">new </span><span class="s1">AdapterView.OnItemClickListener() { 
+        </span><span class="s2">public void </span><span class="s1">onItemClick(AdapterView&lt;?&gt; av</span><span class="s2">, </span><span class="s1">View v</span><span class="s2">, int </span><span class="s1">arg2</span><span class="s2">, long </span><span class="s1">arg3) { 
+            </span><span class="s5">// Cancel discovery because it's costly and we're about to connect</span><span class="s1"> 
+            mBtAdapter.cancelDiscovery()</span><span class="s2">;</span><span class="s1"> 
+ 
+            </span><span class="s5">// Get the device MAC address, which is the last 17 chars in the View</span><span class="s1"> 
+            String info = ((TextView) v).getText().toString()</span><span class="s2">;</span><span class="s1"> 
+            String address = info.substring(info.length() - </span><span class="s6">17</span><span class="s1">)</span><span class="s2">;</span><span class="s1"> 
+ 
+            </span><span class="s5">// Create the result Intent and include the MAC address</span><span class="s1"> 
+            Intent intent = </span><span class="s2">new </span><span class="s1">Intent()</span><span class="s2">;</span><span class="s1"> 
+            intent.putExtra(EXTRA_DEVICE_ADDRESS</span><span class="s2">, </span><span class="s1">address)</span><span class="s2">;</span><span class="s1"> 
+ 
+            </span><span class="s5">// Set result and finish this Activity</span><span class="s1"> 
+            setResult(Activity.RESULT_OK</span><span class="s2">, </span><span class="s1">intent)</span><span class="s2">;</span><span class="s1"> 
+            finish()</span><span class="s2">;</span><span class="s1"> 
+        } 
+    }</span><span class="s2">;</span><span class="s1"> 
+ 
+    </span><span class="s3">/** 
+     * The BroadcastReceiver that listens for discovered devices and changes the title when 
+     * discovery is finished 
+     */</span><span class="s1"> 
+    </span><span class="s2">private final </span><span class="s1">BroadcastReceiver mReceiver = </span><span class="s2">new </span><span class="s1">BroadcastReceiver() { 
+        @Override 
+        </span><span class="s2">public void </span><span class="s1">onReceive(Context context</span><span class="s2">, </span><span class="s1">Intent intent) { 
+            String action = intent.getAction()</span><span class="s2">;</span><span class="s1"> 
+ 
+            </span><span class="s5">// When discovery finds a device</span><span class="s1"> 
+            </span><span class="s2">if </span><span class="s1">(BluetoothDevice.ACTION_FOUND.equals(action)) { 
+                </span><span class="s5">// Get the BluetoothDevice object from the Intent</span><span class="s1"> 
+                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE)</span><span class="s2">;</span><span class="s1"> 
+                </span><span class="s5">// If it's already paired, skip it, because it's been listed already</span><span class="s1"> 
+                </span><span class="s2">if </span><span class="s1">(device.getBondState() != BluetoothDevice.BOND_BONDED) { 
+                    mNewDevicesArrayAdapter.add(device.getName() + </span><span class="s4">&quot;</span><span class="s2">\n</span><span class="s4">&quot; </span><span class="s1">+ device.getAddress())</span><span class="s2">;</span><span class="s1"> 
+                } 
+                </span><span class="s5">// When discovery is finished, change the Activity title</span><span class="s1"> 
+            } </span><span class="s2">else if </span><span class="s1">(BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) { 
+                setProgressBarIndeterminateVisibility(</span><span class="s2">false</span><span class="s1">)</span><span class="s2">;</span><span class="s1"> 
+                setTitle(R.string.select_device)</span><span class="s2">;</span><span class="s1"> 
+                </span><span class="s2">if </span><span class="s1">(mNewDevicesArrayAdapter.getCount() == </span><span class="s6">0</span><span class="s1">) { 
+                    String noDevices = getResources().getText(R.string.none_found).toString()</span><span class="s2">;</span><span class="s1"> 
+                    mNewDevicesArrayAdapter.add(noDevices)</span><span class="s2">;</span><span class="s1"> 
+                } 
+            } 
+        } 
+    }</span><span class="s2">;</span><span class="s1"> 
+ 
+} 
+</span></pre>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<html>
+<head>
+<title>MainActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(128,128,128); font-style: italic; }
+.s1 { color: rgb(169,183,198); }
+.s2 { color: rgb(204,120,50); }
+.s3 { color: rgb(98,151,85); }
+.s4 { color: rgb(106,135,89); }
+.s5 { color: rgb(104,151,187); }
+.s6 { color: rgb(128,128,128); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+MainActivity.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+
+<span class="s0">/* 
+* Copyright 2013 The Android Open Source Project 
+* 
+* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); 
+* you may not use this file except in compliance with the License. 
+* You may obtain a copy of the License at 
+* 
+*     http://www.apache.org/licenses/LICENSE-2.0 
+* 
+* Unless required by applicable law or agreed to in writing, software 
+* distributed under the License is distributed on an &quot;AS IS&quot; BASIS, 
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+* See the License for the specific language governing permissions and 
+* limitations under the License. 
+*/</span><span class="s1"> 
+ 
+</span><span class="s2">package </span><span class="s1">com.example.android.bluetoothchat</span><span class="s2">;</span><span class="s1"> 
+ 
+</span><span class="s2">import </span><span class="s1">android.os.Bundle</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.support.v4.app.FragmentTransaction</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.view.Menu</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.view.MenuItem</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.widget.ViewAnimator</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.app.Activity</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.view.LayoutInflater</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.widget.ArrayAdapter</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.view.ViewGroup</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.widget.Button</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.widget.Toast</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.content.Context</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.content.Intent</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.content.IntentFilter</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.content.BroadcastReceiver</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.app.ActionBar</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.app.Fragment</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.view.View</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.view.ViewGroup</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.bluetooth.BluetoothAdapter</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.bluetooth.BluetoothDevice</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.view.MenuItem</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.view.Window</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.view.WindowManager</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.widget.AdapterView.OnItemClickListener</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.widget.AdapterView</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.widget.ListView</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.widget.SeekBar</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.widget.TabHost</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">android.widget.TextView</span><span class="s2">;</span><span class="s1"> 
+ 
+</span><span class="s2">import </span><span class="s1">java.util.ArrayList</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">java.util.List</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">com.example.android.common.activities.SampleActivityBase</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">com.example.android.common.logger.Log</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">com.example.android.common.logger.LogFragment</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">com.example.android.common.logger.LogWrapper</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s2">import </span><span class="s1">com.example.android.common.logger.MessageOnlyLogFilter</span><span class="s2">;</span><span class="s1"> 
+ 
+</span><span class="s3">/** 
+ * A simple launcher activity containing a summary sample description, sample log and a custom 
+ * {@link android.support.v4.app.Fragment} which can display a view. 
+ * &lt;p&gt; 
+ * For devices with displays with a width of 720dp or greater, the sample log is always visible, 
+ * on other devices it's visibility is controlled by an item on the Action Bar. 
+ */</span><span class="s1"> 
+</span><span class="s2">public class </span><span class="s1">MainActivity </span><span class="s2">extends </span><span class="s1">SampleActivityBase { 
+ 
+    </span><span class="s2">public static final </span><span class="s1">String TAG = </span><span class="s4">&quot;MainActivity&quot;</span><span class="s2">;</span><span class="s1"> 
+ 
+    </span><span class="s2">int </span><span class="s1">bs1</span><span class="s2">, </span><span class="s1">bs2</span><span class="s2">, </span><span class="s1">bs3</span><span class="s2">, </span><span class="s1">bs4</span><span class="s2">;</span><span class="s1"> 
+    </span><span class="s2">int </span><span class="s1">x = </span><span class="s5">0</span><span class="s2">,  </span><span class="s1">y = </span><span class="s5">0</span><span class="s2">;</span><span class="s1"> 
+    </span><span class="s6">// Whether the Log Fragment is currently shown</span><span class="s1"> 
+    </span><span class="s2">private boolean </span><span class="s1">mLogShown</span><span class="s2">;</span><span class="s1"> 
+</span><span class="s6">//***********************************************</span><span class="s1"> 
+ 
+    </span><span class="s6">//DO THE TYLER STRING THING TO PUT SLIDEBAR VALUES INTO BLUETOOTH FRAGMENT: MAKE FRAGMENT SMALLER</span><span class="s1"> 
+ 
+ 
+</span><span class="s6">//*******************************************</span><span class="s1"> 
+ 
+    @Override 
+    </span><span class="s2">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) { 
+        </span><span class="s2">super</span><span class="s1">.onCreate(savedInstanceState)</span><span class="s2">;</span><span class="s1"> 
+        setContentView(R.layout.activity_main)</span><span class="s2">;</span><span class="s1"> 
+ 
+        </span><span class="s2">if </span><span class="s1">(savedInstanceState == </span><span class="s2">null</span><span class="s1">) { 
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction()</span><span class="s2">;</span><span class="s1"> 
+            BluetoothChatFragment fragment = </span><span class="s2">new </span><span class="s1">BluetoothChatFragment()</span><span class="s2">;</span><span class="s1"> 
+ 
+            transaction.replace(R.id.sample_content_fragment</span><span class="s2">, </span><span class="s1">fragment)</span><span class="s2">;</span><span class="s1"> 
+            transaction.commit()</span><span class="s2">;</span><span class="s1"> 
+ 
+ 
+ 
+        } 
+    } 
+ 
+ 
+    @Override 
+    </span><span class="s2">public boolean </span><span class="s1">onCreateOptionsMenu(Menu menu) { 
+        getMenuInflater().inflate(R.menu.main</span><span class="s2">, </span><span class="s1">menu)</span><span class="s2">;</span><span class="s1"> 
+        </span><span class="s2">return true;</span><span class="s1"> 
+    } 
+ 
+ 
+    @Override 
+    </span><span class="s2">public boolean </span><span class="s1">onPrepareOptionsMenu(Menu menu) { 
+        MenuItem logToggle = menu.findItem(R.id.menu_toggle_log)</span><span class="s2">;</span><span class="s1"> 
+        logToggle.setVisible(findViewById(R.id.sample_output) </span><span class="s2">instanceof </span><span class="s1">ViewAnimator)</span><span class="s2">;</span><span class="s1"> 
+        logToggle.setTitle(mLogShown ? R.string.sample_hide_log : R.string.sample_show_log)</span><span class="s2">;</span><span class="s1"> 
+ 
+        </span><span class="s2">return super</span><span class="s1">.onPrepareOptionsMenu(menu)</span><span class="s2">;</span><span class="s1"> 
+    } 
+ 
+    @Override 
+    </span><span class="s2">public boolean </span><span class="s1">onOptionsItemSelected(MenuItem item) { 
+        </span><span class="s2">switch</span><span class="s1">(item.getItemId()) { 
+            </span><span class="s2">case </span><span class="s1">R.id.menu_toggle_log: 
+                mLogShown = !mLogShown</span><span class="s2">;</span><span class="s1"> 
+                ViewAnimator output = (ViewAnimator) findViewById(R.id.sample_output)</span><span class="s2">;</span><span class="s1"> 
+                </span><span class="s2">if </span><span class="s1">(mLogShown) { 
+                    output.setDisplayedChild(</span><span class="s5">1</span><span class="s1">)</span><span class="s2">;</span><span class="s1"> 
+                } </span><span class="s2">else </span><span class="s1">{ 
+                    output.setDisplayedChild(</span><span class="s5">0</span><span class="s1">)</span><span class="s2">;</span><span class="s1"> 
+                } 
+                supportInvalidateOptionsMenu()</span><span class="s2">;</span><span class="s1"> 
+                </span><span class="s2">return true;</span><span class="s1"> 
+        } 
+        </span><span class="s2">return super</span><span class="s1">.onOptionsItemSelected(item)</span><span class="s2">;</span><span class="s1"> 
+    } 
+ 
+    </span><span class="s3">/** Create a chain of targets that will receive log data */</span><span class="s1"> 
+    @Override 
+    </span><span class="s2">public void </span><span class="s1">initializeLogging() { 
+        </span><span class="s6">// Wraps Android's native log framework.</span><span class="s1"> 
+        LogWrapper logWrapper = </span><span class="s2">new </span><span class="s1">LogWrapper()</span><span class="s2">;</span><span class="s1"> 
+        </span><span class="s6">// Using Log, front-end to the logging chain, emulates android.util.log method signatures.</span><span class="s1"> 
+        Log.setLogNode(logWrapper)</span><span class="s2">;</span><span class="s1"> 
+ 
+        </span><span class="s6">// Filter strips out everything except the message text.</span><span class="s1"> 
+        MessageOnlyLogFilter msgFilter = </span><span class="s2">new </span><span class="s1">MessageOnlyLogFilter()</span><span class="s2">;</span><span class="s1"> 
+        logWrapper.setNext(msgFilter)</span><span class="s2">;</span><span class="s1"> 
+ 
+        </span><span class="s6">// On screen logging via a fragment with a TextView.</span><span class="s1"> 
+        LogFragment logFragment = (LogFragment) getSupportFragmentManager() 
+                .findFragmentById(R.id.log_fragment)</span><span class="s2">;</span><span class="s1"> 
+        msgFilter.setNext(logFragment.getLogView())</span><span class="s2">;</span><span class="s1"> 
+ 
+        Log.i(TAG</span><span class="s2">, </span><span class="s4">&quot;Ready&quot;</span><span class="s1">)</span><span class="s2">;</span><span class="s1"> 
+    } 
+} 
+</span></pre>
+</body>
+</html>
