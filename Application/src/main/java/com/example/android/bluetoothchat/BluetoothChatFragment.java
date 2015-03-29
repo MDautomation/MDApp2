@@ -459,8 +459,8 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
                     minutez="xx";
                 }
                 ((TextView) getView().findViewById(R.id.spintext)).setText("z"+message+message1+message2+message3+c+hourz+minutez);
-               // sendMessage("z"+message+message1+message2+message3+c+hourz+minutez);
-                sendMessage("c74727274n404040400600w404040402200");
+                sendMessage("z"+message+message1+message2+message3+c+hourz+minutez);
+               // sendMessage("c74727274n404040400600w404040402200");
                 try { Thread.sleep(4000); } catch (Exception e) { return ;}
             }
         });
