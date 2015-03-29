@@ -534,7 +534,7 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
     /**
      * Updates the status on the action bar.
      *
-     * @param subTitle status
+     * @param subTitle status.l
      */
     private void setStatus(CharSequence subTitle) {
         FragmentActivity activity = getActivity();
