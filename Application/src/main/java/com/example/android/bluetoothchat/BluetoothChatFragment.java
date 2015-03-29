@@ -166,6 +166,98 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
         addListenerOnButton();
         addListenerOnSpinnerItemSelection();
         updatetime();
+        bs1 = sb1.getProgress();
+        bs2 = sb2.getProgress();
+        bs3 = sb3.getProgress();
+        bs4 = sb4.getProgress();
+        switch1 = (Switch) getView().findViewById(R.id.switch1);
+        switch2 = (Switch) getView().findViewById(R.id.switch2);
+        switch3 = (Switch) getView().findViewById(R.id.switch3);
+        switch4 = (Switch) getView().findViewById(R.id.switch4);
+        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    sw1 =1;
+                    ((TextView) getView().findViewById(R.id.editText)).setText(bs1 + 40 + "");
+                }
+                else  {
+                    sw1=0;
+                    ((TextView) getView().findViewById(R.id.editText)).setText("nl");
+                }
+            }
+        });
+
+        if (sw1==1){
+            ((TextView) getView().findViewById(R.id.editText)).setText(bs1 + 40 + "");
+        }
+        else {
+            ((TextView) getView().findViewById(R.id.editText)).setText("nl");
+        }
+        switch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    sw2 =1;
+                    ((TextView) getView().findViewById(R.id.editText2)).setText(bs2 + 40 + "");
+                }
+                else  {
+                    sw2=0;
+                    ((TextView) getView().findViewById(R.id.editText2)).setText("nl");
+                }
+            }
+        });
+
+        if (sw2==1){
+            ((TextView) getView().findViewById(R.id.editText2)).setText(bs2 + 40 + "");
+        }
+        else if (sw2==0) {
+            ((TextView) getView().findViewById(R.id.editText2)).setText("nl");
+        }
+        switch3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    sw3 =1;
+                    ((TextView) getView().findViewById(R.id.editText3)).setText(bs3 + 40 + "");
+                }
+                else  {
+                    sw3=0;
+                    ((TextView) getView().findViewById(R.id.editText3)).setText("nl");
+                }
+            }
+        });
+
+        if (sw3==1){
+            ((TextView) getView().findViewById(R.id.editText3)).setText(bs3 + 40 + "");
+        }
+        else if (sw3==0) {
+            ((TextView) getView().findViewById(R.id.editText3)).setText("nl");
+        }
+        switch4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    sw4 =1;
+                    ((TextView) getView().findViewById(R.id.editText4)).setText(bs4 + 40 + "");
+                }
+                else  {
+                    sw4=0;
+                    ((TextView) getView().findViewById(R.id.editText4)).setText("nl");
+                }
+            }
+        });
+
+        if (sw4==1){
+            ((TextView) getView().findViewById(R.id.editText4)).setText(bs4 + 40 + "");
+        }
+        else if (sw4==0) {
+            ((TextView) getView().findViewById(R.id.editText4)).setText("nl");
+        }
 
     }
     public void addListenerOnSpinnerItemSelection() {
