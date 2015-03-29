@@ -245,7 +245,7 @@
         <item>Schedule Time Two</item>
 
 
-    </string-array><string name="country_prompt">Choose a country</string><string name="not_connected">You are not connected to a device</string><string name="scanning">scanning for devices...</string><string name="title_other_devices">Other Available Devices</string><string name="select_device">select a device to connect</string><string name="title_connecting">connecting...</string><string name="none_paired">No devices have been paired</string><string name="secure_connect">Connect a device - Secure</string><string name="title_paired_devices">Paired Devices</string><string name="discoverable">Make discoverable</string><string name="insecure_connect">Connect a device - Insecure</string><string-array name="country_arrays">
+    </string-array><string name="country_prompt">Choose a country</string><string name="not_connected">You are not connected to a device</string><string name="scanning">scanning for devices...</string><string name="title_other_devices">Other Available Devices</string><string name="select_device">select a device to connect</string><string name="title_connecting">connecting...</string><string name="none_paired">No devices have been paired</string><string name="secure_connect">Connect a device - Secure</string><string name="title_paired_devices">Paired Devices</string><string name="discoverable">Make discoverable</string><string name="none_found">No devices found</string><string-array name="country_arrays">
         <item>Sunday</item>
         <item>Monday</item>
         <item>Tuesday</item>
@@ -254,7 +254,7 @@
         <item>Friday</item>
         <item>Saturday</item>
 
-    </string-array><string name="none_found">No devices found</string><string name="button_scan">Scan for devices</string></file><file path="C:\Program Files\BluetoothChat4\Application\src\main\res\values\template-dimens.xml" qualifiers=""><dimen name="margin_huge">64dp</dimen><dimen name="margin_tiny">4dp</dimen><dimen name="horizontal_page_margin">@dimen/margin_medium</dimen><dimen name="margin_large">32dp</dimen><dimen name="margin_medium">16dp</dimen><dimen name="vertical_page_margin">@dimen/margin_medium</dimen><dimen name="margin_small">8dp</dimen></file><file path="C:\Program Files\BluetoothChat4\Application\src\main\res\values\template-styles.xml" qualifiers=""><style name="Widget"/><style name="Widget.SampleMessage">
+    </string-array><string name="insecure_connect">Connect a device - Insecure</string><string name="button_scan">Scan for devices</string></file><file path="C:\Program Files\BluetoothChat4\Application\src\main\res\values\template-dimens.xml" qualifiers=""><dimen name="margin_huge">64dp</dimen><dimen name="margin_tiny">4dp</dimen><dimen name="margin_large">32dp</dimen><dimen name="horizontal_page_margin">@dimen/margin_medium</dimen><dimen name="margin_medium">16dp</dimen><dimen name="vertical_page_margin">@dimen/margin_medium</dimen><dimen name="margin_small">8dp</dimen></file><file path="C:\Program Files\BluetoothChat4\Application\src\main\res\values\template-styles.xml" qualifiers=""><style name="Widget"/><style name="Widget.SampleMessage">
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
         <item name="android:lineSpacingMultiplier">1.1</item>
     </style><style name="Widget.SampleMessageTile">
