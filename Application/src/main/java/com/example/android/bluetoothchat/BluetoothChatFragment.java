@@ -414,6 +414,7 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
             public void onClick(View v) {
                 updatetime();
                 sendMessage("U"+hourz+minutez);
+
                // try { Thread.sleep(4000); } catch (Exception e) { return ;}
             }
         });
@@ -458,8 +459,8 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
                     minutez="xx";
                 }
                 ((TextView) getView().findViewById(R.id.spintext)).setText("z"+message+message1+message2+message3+c+hourz+minutez);
-                sendMessage("z"+message+message1+message2+message3+c+hourz+minutez);
-               // sendMessage("c74727274n404040400600w404040402200");
+               // sendMessage("z"+message+message1+message2+message3+c+hourz+minutez);
+                sendMessage("c74727274n404040400600w404040402200");
                 try { Thread.sleep(4000); } catch (Exception e) { return ;}
             }
         });
@@ -589,7 +590,7 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
                        ((TextView) getView().findViewById(R.id.r2temp)).setText(" "+readMessage.charAt(3)+readMessage.charAt(4)+" ");
                        ((TextView) getView().findViewById(R.id.r3temp)).setText(" "+readMessage.charAt(5)+readMessage.charAt(6)+" ");
                        ((TextView) getView().findViewById(R.id.r4temp)).setText(" "+readMessage.charAt(7)+readMessage.charAt(8)+" ");
-                    ((TextView) getView().findViewById(R.id.textView16)).setText("Room 1: "+readMessage.charAt(10)+readMessage.charAt(11)+" and "+readMessage.charAt(23)+readMessage.charAt(24)+" degrees");
+                       ((TextView) getView().findViewById(R.id.textView16)).setText("Room 1: "+readMessage.charAt(10)+readMessage.charAt(11)+" and "+readMessage.charAt(23)+readMessage.charAt(24)+" degrees");
                     ((TextView) getView().findViewById(R.id.textView2)).setText("Room 2: "+readMessage.charAt(12)+readMessage.charAt(13)+" and "+readMessage.charAt(25)+readMessage.charAt(26)+" degrees");
                     ((TextView) getView().findViewById(R.id.textView18)).setText("Room 3: "+readMessage.charAt(14)+readMessage.charAt(15)+" and "+readMessage.charAt(27)+readMessage.charAt(28)+" degrees");
                     ((TextView) getView().findViewById(R.id.textView20)).setText("Room 4: "+readMessage.charAt(16)+readMessage.charAt(17)+" and "+readMessage.charAt(29)+readMessage.charAt(30)+" degrees");
