@@ -175,7 +175,7 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
 
         schedspin.setOnItemSelectedListener(new CustomonItemSelectedListener());
     }
-    // get the selected dropdown list value
+    // get the selected dropdown list valued
 
     private void updatevalues() {
 
