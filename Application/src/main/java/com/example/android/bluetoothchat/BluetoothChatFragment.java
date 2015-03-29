@@ -460,7 +460,7 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
                 }
                 ((TextView) getView().findViewById(R.id.spintext)).setText("z"+message+message1+message2+message3+c+hourz+minutez);
                 sendMessage("z"+message+message1+message2+message3+c+hourz+minutez);
-               // sendMessage("c74727274n404040400600w404040402200");
+                //sendMessage("c74727274n404040400600w404040402200");
                 try { Thread.sleep(4000); } catch (Exception e) { return ;}
             }
         });
@@ -585,7 +585,7 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
                     mConversationArrayAdapter.add(mConnectedDeviceName + ":  " + readMessage);
 
                     // USE FOR DETERMINING ROOM TEMPERATURES SENT FROM BLUETOOTH TO PHONE
-
+                    try { Thread.sleep(4000); } catch (Exception e) { return ;}
                        ((TextView) getView().findViewById(R.id.r1temp)).setText(" "+readMessage.charAt(1)+readMessage.charAt(2)+" ");
                        ((TextView) getView().findViewById(R.id.r2temp)).setText(" "+readMessage.charAt(3)+readMessage.charAt(4)+" ");
                        ((TextView) getView().findViewById(R.id.r3temp)).setText(" "+readMessage.charAt(5)+readMessage.charAt(6)+" ");
