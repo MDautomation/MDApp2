@@ -24,18 +24,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import java.util.Calendar;
-import android.widget.RadioButton;
 import android.widget.Switch;
-import android.widget.ToggleButton;
-import android.widget.CheckBox;
-import android.content.Context;
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
 import android.widget.CompoundButton;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
 import android.support.annotation.Nullable;
@@ -43,8 +35,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.widget.TimePicker;
-
 import android.widget.SeekBar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -53,27 +43,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
-import android.app.ActionBar;
-import android.widget.Button;
-import android.widget.EditText;
-import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.SeekBar;
-import android.widget.TabHost;
-import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.List;
-import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.android.common.logger.Log;
 
 /**
@@ -82,15 +55,13 @@ import com.example.android.common.logger.Log;
 public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBarChangeListener {
 
     private static final String TAG = "BluetoothChatFragment";
-    private Spinner spinner1, schedspin;
+    private Spinner schedspin;
     private Button btnSubmit;
     // Intent request codes
     private static final int REQUEST_CONNECT_DEVICE_SECURE = 1;
     private static final int REQUEST_CONNECT_DEVICE_INSECURE = 2;
     private static final int REQUEST_ENABLE_BT = 3;
     private Switch switch1, switch2, switch3, switch4;
-    private boolean issw1checked;
-    int set =40;
     SeekBar sb1, sb2, sb3, sb4;
     private int bs1, bs2, bs3, bs4;
     private int sw1, sw2, sw3, sw4;
@@ -98,18 +69,11 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
     private String message, message1, message2, message3;
     private TimePicker tpicker;
     private ListView mConversationView;
-    private EditText mOutEditText;
     private int hour, minutes, hour2, minutes2;
-   // private Button mSendButton;
     private Button sync;
-    private int z=0;
     private EditText r1, r2, r3, r4;
-    private String newVar;
-    private String newVar1;
-    private String newVar2;
-    private String newVar3;
     private String mConnectedDeviceName = null;
-    private String Days, Sched, day, sche;
+    private String  Sched;
     private ArrayAdapter<String> mConversationArrayAdapter;
     private String hourz, minutez;
     private StringBuffer mOutStringBuffer;

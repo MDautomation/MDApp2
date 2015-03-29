@@ -32,6 +32,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1fece5c5-d0cc-4272-9456-7d1079fe5b0b" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/src/main/java/com/example/android/bluetoothchat/BluetoothChatFragment.java" afterPath="$PROJECT_DIR$/Application/src/main/java/com/example/android/bluetoothchat/BluetoothChatFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/src/main/res/layout/fragment_bluetooth_chat.xml" afterPath="$PROJECT_DIR$/Application/src/main/res/layout/fragment_bluetooth_chat.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="BluetoothChat4.iws" />
@@ -63,11 +66,10 @@
       <file leaf-file-name="BluetoothChatFragment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/example/android/bluetoothchat/BluetoothChatFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="6544" max-vertical-offset="11526">
-              <caret line="463" column="33" selection-start-line="463" selection-start-column="33" selection-end-line="463" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="7854" max-vertical-offset="10387">
+              <caret line="150" column="59" selection-start-line="150" selection-start-column="59" selection-end-line="150" selection-end-column="59" />
               <folding>
-                <element signature="e#0#27544#0" expanded="true" />
-                <element signature="imports" expanded="true" />
+                <element signature="e#0#26476#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -79,8 +81,8 @@
             <state />
           </provider>
           <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4581" max-vertical-offset="6681">
-              <caret line="300" column="7" selection-start-line="300" selection-start-column="7" selection-end-line="300" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="712" max-vertical-offset="6681">
+              <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -684,8 +686,8 @@
         <option value="$PROJECT_DIR$/Application/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/Application/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/Application/src/main/java/com/example/android/bluetoothchat/BluetoothChatService.java" />
-        <option value="$PROJECT_DIR$/Application/src/main/java/com/example/android/bluetoothchat/BluetoothChatFragment.java" />
         <option value="$PROJECT_DIR$/Application/src/main/res/layout/fragment_bluetooth_chat.xml" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/example/android/bluetoothchat/BluetoothChatFragment.java" />
       </list>
     </option>
   </component>
@@ -868,6 +870,9 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteToolWindowManager.WIDTH" value="184" />
+    <property name="DEBUGGABLE_DEVICE" value="oneplus-a0001-64aa55e7" />
+    <property name="DEBUGGABLE_PROCESS" value="com.example.android.bluetoothchat" />
+    <property name="SHOW_ALL_PROCESSES" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.packageName">
@@ -1132,16 +1137,17 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.036170214" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942432" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.05531915" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14893617" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13829787" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.121276595" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1155,7 +1161,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.11595745" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1238,8 +1243,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="5440" max-vertical-offset="7786">
           <caret line="409" column="72" selection-start-line="409" selection-start-column="72" selection-end-line="409" selection-end-column="72" />
           <folding>
-            <element signature="e#0#27544#0" expanded="true" />
-            <element signature="imports" expanded="true" />
+            <element signature="e#0#26476#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1278,8 +1282,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8908">
           <caret line="507" column="13" selection-start-line="507" selection-start-column="13" selection-end-line="507" selection-end-column="13" />
           <folding>
-            <element signature="e#0#27544#0" expanded="true" />
-            <element signature="imports" expanded="true" />
+            <element signature="e#0#26476#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1318,8 +1321,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="4165" max-vertical-offset="8466">
           <caret line="259" column="39" selection-start-line="259" selection-start-column="39" selection-end-line="259" selection-end-column="39" />
           <folding>
-            <element signature="e#0#27544#0" expanded="true" />
-            <element signature="imports" expanded="true" />
+            <element signature="e#0#26476#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1358,8 +1360,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="3502" max-vertical-offset="8364">
           <caret line="206" column="75" selection-start-line="206" selection-start-column="72" selection-end-line="206" selection-end-column="75" />
           <folding>
-            <element signature="e#0#27544#0" expanded="true" />
-            <element signature="imports" expanded="true" />
+            <element signature="e#0#26476#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1398,8 +1399,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8364">
           <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
           <folding>
-            <element signature="e#0#27544#0" expanded="true" />
-            <element signature="imports" expanded="true" />
+            <element signature="e#0#26476#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1438,8 +1438,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8721">
           <caret line="76" column="42" selection-start-line="76" selection-start-column="42" selection-end-line="76" selection-end-column="42" />
           <folding>
-            <element signature="e#0#27544#0" expanded="true" />
-            <element signature="imports" expanded="true" />
+            <element signature="e#0#26476#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1474,8 +1473,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="2941" max-vertical-offset="6817">
           <caret line="233" column="0" selection-start-line="233" selection-start-column="0" selection-end-line="233" selection-end-column="0" />
           <folding>
-            <element signature="e#0#27544#0" expanded="true" />
-            <element signature="imports" expanded="true" />
+            <element signature="e#0#26476#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1496,8 +1494,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7463">
           <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
           <folding>
-            <element signature="e#0#27544#0" expanded="true" />
-            <element signature="imports" expanded="true" />
+            <element signature="e#0#26476#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1675,19 +1672,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/example/android/bluetoothchat/BluetoothChatFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6544" max-vertical-offset="11526">
-          <caret line="463" column="33" selection-start-line="463" selection-start-column="33" selection-end-line="463" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="8415" max-vertical-offset="10387">
+          <caret line="150" column="59" selection-start-line="150" selection-start-column="59" selection-end-line="150" selection-end-column="59" />
           <folding>
-            <element signature="e#0#27544#0" expanded="true" />
-            <element signature="imports" expanded="true" />
+            <element signature="e#0#26476#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/src/main/res/layout/fragment_bluetooth_chat.xml">
       <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4581" max-vertical-offset="6681">
-          <caret line="300" column="7" selection-start-line="300" selection-start-column="7" selection-end-line="300" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="712" max-vertical-offset="6681">
+          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
           <folding />
         </state>
       </provider>

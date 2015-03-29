@@ -22,7 +22,7 @@
     android:background="#67b0ffcf">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
+              android:layout_height="wrap_content"
               android:orientation="vertical"
                 android:weightSum="1">
 
@@ -74,7 +74,7 @@
 
 
         <SeekBar
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/seekBar2"
             android:layout_weight="1"
@@ -130,7 +130,7 @@
 
 
         <SeekBar
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/seekBar3"
             android:layout_weight="1"
@@ -186,7 +186,7 @@
 
 
         <SeekBar
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/seekBar4"
             android:layout_weight="1"
@@ -243,7 +243,7 @@
 
 
         <SeekBar
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/seekBar5"
             android:layout_weight="1"
@@ -275,7 +275,7 @@
         android:layout_gravity="center">
 
         <TimePicker
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/timePicker"
             android:layout_weight="1" />
