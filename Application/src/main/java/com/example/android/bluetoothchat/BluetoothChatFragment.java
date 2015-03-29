@@ -99,9 +99,10 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
     private TimePicker tpicker;
     private ListView mConversationView;
     private EditText mOutEditText;
-    private int hour, minutes;
+    private int hour, minutes, hour2, minutes2;
    // private Button mSendButton;
     private Button sync;
+    private int z=0;
     private EditText r1, r2, r3, r4;
     private String newVar;
     private String newVar1;
@@ -412,6 +413,10 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
         sync.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                hour2 = tpicker.getCurrentHour();
+                minutes2 = tpicker.getCurrentMinute();
+                hourz =Integer.toString(hour2);
+                minutez =Integer.toString(minutes2);
                 updatetime();
                 sendMessage("U"+hourz+minutez);
 
@@ -458,7 +463,7 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
                     hourz="xx";
                     minutez="xx";
                 }
-                ((TextView) getView().findViewById(R.id.spintext)).setText("z"+message+message1+message2+message3+c+hourz+minutez);
+                //((TextView) getView().findViewById(R.id.sxt)).setText("z"+message+message1+message2+message3+c+hourz+minutez);
                 sendMessage("z"+message+message1+message2+message3+c+hourz+minutez);
                 //sendMessage("c74727274n404040400600w404040402200");
                 try { Thread.sleep(4000); } catch (Exception e) { return ;}
@@ -551,7 +556,7 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
     /**
      * The Handler that gets information back from the BluetoothChatService
      */
-    private final Handler mHandler = new Handler() {
+    protected final Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             FragmentActivity activity = getActivity();
@@ -584,12 +589,14 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
                     String readMessage = new String(readBuf, 0, msg.arg1);
                     mConversationArrayAdapter.add(mConnectedDeviceName + ":  " + readMessage);
 
+
+
                     // Sync Button.  Update temperature and time values to current values upon press.
                     try { Thread.sleep(1000); } catch (Exception e) { return ;}
                     if (readMessage.charAt(0)=='c') {
                         try { Thread.sleep(1000); } catch (Exception e) { return ;}
                         ((TextView) getView().findViewById(R.id.r1temp)).setText(" " + readMessage.charAt(1) + readMessage.charAt(2) + " ");
-                        ((TextView) getView().findViewById(R.id.r2temp)).setText(" " + readMessage.charAt(3) + readMessage.charAt(4) + " ");
+                       ((TextView) getView().findViewById(R.id.r2temp)).setText(" " + readMessage.charAt(3) + readMessage.charAt(4) + " ");
                         ((TextView) getView().findViewById(R.id.r3temp)).setText(" " + readMessage.charAt(5) + readMessage.charAt(6) + " ");
                         ((TextView) getView().findViewById(R.id.r4temp)).setText(" " + readMessage.charAt(7) + readMessage.charAt(8) + " ");
                         ((TextView) getView().findViewById(R.id.textView16)).setText("Room 1: " + readMessage.charAt(10) + readMessage.charAt(11) + " and " + readMessage.charAt(23) + readMessage.charAt(24) + " degrees");
