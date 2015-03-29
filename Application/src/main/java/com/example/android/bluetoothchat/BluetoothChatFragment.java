@@ -584,17 +584,20 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
                     String readMessage = new String(readBuf, 0, msg.arg1);
                     mConversationArrayAdapter.add(mConnectedDeviceName + ":  " + readMessage);
 
-                    // USE FOR DETERMINING ROOM TEMPERATURES SENT FROM BLUETOOTH TO PHONE
-                    try { Thread.sleep(4000); } catch (Exception e) { return ;}
-                       ((TextView) getView().findViewById(R.id.r1temp)).setText(" "+readMessage.charAt(1)+readMessage.charAt(2)+" ");
-                       ((TextView) getView().findViewById(R.id.r2temp)).setText(" "+readMessage.charAt(3)+readMessage.charAt(4)+" ");
-                       ((TextView) getView().findViewById(R.id.r3temp)).setText(" "+readMessage.charAt(5)+readMessage.charAt(6)+" ");
-                       ((TextView) getView().findViewById(R.id.r4temp)).setText(" "+readMessage.charAt(7)+readMessage.charAt(8)+" ");
-                       ((TextView) getView().findViewById(R.id.textView16)).setText("Room 1: "+readMessage.charAt(10)+readMessage.charAt(11)+" and "+readMessage.charAt(23)+readMessage.charAt(24)+" degrees");
-                    ((TextView) getView().findViewById(R.id.textView2)).setText("Room 2: "+readMessage.charAt(12)+readMessage.charAt(13)+" and "+readMessage.charAt(25)+readMessage.charAt(26)+" degrees");
-                    ((TextView) getView().findViewById(R.id.textView18)).setText("Room 3: "+readMessage.charAt(14)+readMessage.charAt(15)+" and "+readMessage.charAt(27)+readMessage.charAt(28)+" degrees");
-                    ((TextView) getView().findViewById(R.id.textView20)).setText("Room 4: "+readMessage.charAt(16)+readMessage.charAt(17)+" and "+readMessage.charAt(29)+readMessage.charAt(30)+" degrees");
-                    ((TextView) getView().findViewById(R.id.textView7)).setText("Scheduled Event Times: "+readMessage.charAt(18)+readMessage.charAt(19)+":"+readMessage.charAt(20)+readMessage.charAt(21)+" and "+readMessage.charAt(31)+readMessage.charAt(32)+":"+readMessage.charAt(33)+readMessage.charAt(34));
+                    // Sync Button.  Update temperature and time values to current values upon press.
+                    try { Thread.sleep(1000); } catch (Exception e) { return ;}
+                    if (readMessage.charAt(0)=='c') {
+                        try { Thread.sleep(1000); } catch (Exception e) { return ;}
+                        ((TextView) getView().findViewById(R.id.r1temp)).setText(" " + readMessage.charAt(1) + readMessage.charAt(2) + " ");
+                        ((TextView) getView().findViewById(R.id.r2temp)).setText(" " + readMessage.charAt(3) + readMessage.charAt(4) + " ");
+                        ((TextView) getView().findViewById(R.id.r3temp)).setText(" " + readMessage.charAt(5) + readMessage.charAt(6) + " ");
+                        ((TextView) getView().findViewById(R.id.r4temp)).setText(" " + readMessage.charAt(7) + readMessage.charAt(8) + " ");
+                        ((TextView) getView().findViewById(R.id.textView16)).setText("Room 1: " + readMessage.charAt(10) + readMessage.charAt(11) + " and " + readMessage.charAt(23) + readMessage.charAt(24) + " degrees");
+                        ((TextView) getView().findViewById(R.id.textView2)).setText("Room 2: " + readMessage.charAt(12) + readMessage.charAt(13) + " and " + readMessage.charAt(25) + readMessage.charAt(26) + " degrees");
+                        ((TextView) getView().findViewById(R.id.textView18)).setText("Room 3: " + readMessage.charAt(14) + readMessage.charAt(15) + " and " + readMessage.charAt(27) + readMessage.charAt(28) + " degrees");
+                        ((TextView) getView().findViewById(R.id.textView20)).setText("Room 4: " + readMessage.charAt(16) + readMessage.charAt(17) + " and " + readMessage.charAt(29) + readMessage.charAt(30) + " degrees");
+                        ((TextView) getView().findViewById(R.id.textView7)).setText("Scheduled Event Times: " + readMessage.charAt(18) + readMessage.charAt(19) + ":" + readMessage.charAt(20) + readMessage.charAt(21) + " and " + readMessage.charAt(31) + readMessage.charAt(32) + ":" + readMessage.charAt(33) + readMessage.charAt(34));
+                    }
                     break;
                 case Constants.MESSAGE_DEVICE_NAME:
                     // save the connected device's name
