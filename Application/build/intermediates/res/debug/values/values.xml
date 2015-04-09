@@ -14,8 +14,8 @@
     </string-array>
     <string-array name="sched_arrays">
         <item>Update Instantly</item>
-        <item>Schedule Time One</item>
-        <item>Schedule Time Two</item>
+        <item>Daytime Schedule</item>
+        <item>Nighttime Schedule</item>
 
 
     </string-array>
@@ -45,7 +45,7 @@
     <dimen name="vertical_page_margin">@dimen/margin_medium</dimen>
     <!-- From: file:/C:/Program%20Files/BluetoothChat4/Application/src/main/res/values/base-strings.xml -->
     <eat-comment/>
-    <string name="app_name">BluetoothChat</string>
+    <string name="app_name">VDCS Control</string>
     <!-- From: file:/C:/Program%20Files/BluetoothChat4/Application/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="bt_not_enabled_leaving">Bluetooth was not enabled. Leaving Bluetooth Chat.</string>
@@ -59,13 +59,7 @@
         <![CDATA[
         
             
-            This application allows two Android devices to carry out two-way text chat over
-            Bluetooth. It demonstrates all the fundamental Bluetooth API capabilites, such as:
-              (1) Scanning for other Bluetooth devices
-              (2) Querying the local Bluetooth adapter for paired Bluetooth devices
-              (3) Establishing RFCOMM channels/sockets
-              (4) Connecting to a remote device
-              (5) Transfering data over Bluetooth
+            This application allows for control of the VDCS system.
             
         
         ]]>
@@ -77,8 +71,8 @@
     <string name="not_connected">You are not connected to a device</string>
     <!-- From: file:/C:/Program%20Files/BluetoothChat4/Application/src/main/res/values/fragmentview_strings.xml -->
     <eat-comment/>
-    <string name="sample_hide_log">Hide Log</string>
-    <string name="sample_show_log">Show Log</string>
+    <string name="sample_hide_log"> </string>
+    <string name="sample_show_log"> </string>
     <!-- From: file:/C:/Program%20Files/BluetoothChat4/Application/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="scanning">scanning for devices...</string>
