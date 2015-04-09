@@ -38,8 +38,8 @@
 
     <string-array name="sched_arrays">
         <item>Update Instantly</item>
-        <item>Schedule Time One</item>
-        <item>Schedule Time Two</item>
+        <item>Daytime Schedule</item>
+        <item>Nighttime Schedule</item>
 
 
     </string-array>

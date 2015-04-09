@@ -48,6 +48,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.android.common.logger.Log;
+import java.util.Calendar;
 
 /**
  * This fragment controls Bluetooth to communicate with other devices.
@@ -75,7 +76,7 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
     private String mConnectedDeviceName = null;
     private String  Sched;
     private ArrayAdapter<String> mConversationArrayAdapter;
-    private String hourz, minutez;
+    private String hourz, minutez, hourz2, minutez2;
     private StringBuffer mOutStringBuffer;
 
     private BluetoothAdapter mBluetoothAdapter = null;
@@ -130,7 +131,8 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
         minutez =Integer.toString(minutes);
         addListenerOnButton();
         addListenerOnSpinnerItemSelection();
-        updatetime();
+        hourz=updatetime(Integer.toString(hour));
+        minutez=updatetime(Integer.toString(minutes));
         updatevalues();
 
     }
@@ -157,7 +159,7 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
-                     sw1 =1;
+                    sw1 =1;
                     ((TextView) getView().findViewById(R.id.editText)).setText(bs1 + 40 + "");
                 }
                 else  {
@@ -289,76 +291,43 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         mConversationView = (ListView) view.findViewById(R.id.in);
-       // mOutEditText = (EditText) view.findViewById(R.id.edit_text_out);
+        // mOutEditText = (EditText) view.findViewById(R.id.edit_text_out);
         r1 = (EditText) view.findViewById(R.id.editText);
         r2 = (EditText) view.findViewById(R.id.editText2);
         r3 = (EditText) view.findViewById(R.id.editText3);
         r4 = (EditText) view.findViewById(R.id.editText4);
 
-     //   mSendButton = (Button) view.findViewById(R.id.button_send);
-      //  save = (Button) view.findViewById(R.id.save);
+        //   mSendButton = (Button) view.findViewById(R.id.button_send);
+        //  save = (Button) view.findViewById(R.id.save);
 
     }
 
     /**
      * Set up the UI and background operations for chat.
      */
-    private void updatetime(){
-       //method that converts time
-        if (hourz.equals("1")) {
-            hourz = ("01");
+    public String updatetime(String digit){
+        //method that converts time
+        String digout = digit;
+        if (digit.equals("1")) {
+            digout = ("01");
+        } else if (digit.equals("2")) {
+            digout = ("02");
+        } else if (digit.equals("3")) {
+            digout = ("03");
+        } else if (digit.equals("4")) {
+            digout = ("04");
+        } else if (digit.equals("5")) {
+            digout = ("05");
+        } else if (digit.equals("6")) {
+            digout = ("06");
+        } else if (digit.equals("7")) {
+            digout = ("07");
+        } else if (digit.equals("8")) {
+            digout = ("08");
+        } else if (digit.equals("9")) {
+            digout = ("09");
         }
-        if (hourz.equals("2")) {
-            hourz = ("02");
-        }
-        if (hourz.equals("3")) {
-            hourz = ("03");
-        }
-        if (hourz.equals("4")) {
-            hourz = ("04");
-        }
-        if (hourz.equals("5")) {
-            hourz = ("05");
-        }
-        if (hourz.equals("6")) {
-            hourz = ("06");
-        }
-        if (hourz.equals("7")) {
-            hourz = ("07");
-        }
-        if (hourz.equals("8")) {
-            hourz = ("08");
-        }
-        if (hourz.equals("9")) {
-            hourz = ("09");
-        }
-        if (minutez.equals("1")) {
-            minutez = ("01");
-        }
-        if (minutez.equals("2")) {
-            minutez = ("02");
-        }
-        if (minutez.equals("3")) {
-            minutez = ("03");
-        }
-        if (minutez.equals("4")) {
-            minutez = ("04");
-        }
-        if (minutez.equals("5")) {
-            minutez = ("05");
-        }
-        if (minutez.equals("6")) {
-            minutez = ("06");
-        }
-        if (minutez.equals("7")) {
-            minutez = ("07");
-        }
-        if (minutez.equals("8")) {
-            minutez = ("08");
-        }
-        if (minutez.equals("9")) {
-            minutez = ("09");
-        }
+        return digout;
     }
     private void setupChat() {
         Log.d(TAG, "setupChat()");
@@ -377,14 +346,13 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
         sync.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                hour2 = tpicker.getCurrentHour();
-                minutes2 = tpicker.getCurrentMinute();
-                hourz =Integer.toString(hour2);
-                minutez =Integer.toString(minutes2);
-                updatetime();
-                sendMessage("U"+hourz+minutez);
-
-               // try { Thread.sleep(4000); } catch (Exception e) { return ;}
+                Calendar c = Calendar.getInstance();
+                int minutes2 = c.get(Calendar.MINUTE);
+                int hours2 = c.get(Calendar.HOUR_OF_DAY);
+                hourz2 = updatetime(Integer.toString(hours2));
+                minutez2 = updatetime(Integer.toString(minutes2));
+                sendMessage("U"+hourz2+minutez2);
+                // try { Thread.sleep(4000); } catch (Exception e) { return ;}
             }
         });
         btnSubmit.setOnClickListener(new OnClickListener() {
@@ -417,19 +385,20 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
                 tpicker =(TimePicker) getView().findViewById(R.id.timePicker);
                 hour = tpicker.getCurrentHour();
                 minutes = tpicker.getCurrentMinute();
-                hourz =Integer.toString(hour);
-                minutez =Integer.toString(minutes);
+                //hourz =Integer.toString(hour);
+                //minutez =Integer.toString(minutes);
                 addListenerOnButton();
                 addListenerOnSpinnerItemSelection();
-                updatetime();
+                hourz=updatetime(Integer.toString(hour));
+                minutez=updatetime(Integer.toString(minutes));
                 char c= Sched.charAt(15);
                 if(c=='y'){
                     hourz="xx";
                     minutez="xx";
                 }
-                //((TextView) getView().findViewById(R.id.sxt)).setText("z"+message+message1+message2+message3+c+hourz+minutez);
+               // ((TextView) getView().findViewById(R.id.test1)).setText("z"+message+message1+message2+message3+c+hourz+minutez);
                 sendMessage("z"+message+message1+message2+message3+c+hourz+minutez);
-                //sendMessage("c74727274n404040400600w404040402200");
+//sendMessage("c74727274n404040400600w404040402200");
                 try { Thread.sleep(4000); } catch (Exception e) { return ;}
             }
         });
@@ -464,7 +433,7 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
 
             // Reset out string buffer to zero and clear the edit text field
             mOutStringBuffer.setLength(0);
-           // mOutEditText.setText(mOutStringBuffer);
+            // mOutEditText.setText(mOutStringBuffer);
         }
     }
 
@@ -559,8 +528,9 @@ public class BluetoothChatFragment extends Fragment implements SeekBar.OnSeekBar
                     try { Thread.sleep(1000); } catch (Exception e) { return ;}
                     if (readMessage.charAt(0)=='c') {
                         try { Thread.sleep(1000); } catch (Exception e) { return ;}
+                      //  ((TextView) getView().findViewById(R.id.test2)).setText(" " + readMessage+ " ");
                         ((TextView) getView().findViewById(R.id.r1temp)).setText(" " + readMessage.charAt(1) + readMessage.charAt(2) + " ");
-                       ((TextView) getView().findViewById(R.id.r2temp)).setText(" " + readMessage.charAt(3) + readMessage.charAt(4) + " ");
+                        ((TextView) getView().findViewById(R.id.r2temp)).setText(" " + readMessage.charAt(3) + readMessage.charAt(4) + " ");
                         ((TextView) getView().findViewById(R.id.r3temp)).setText(" " + readMessage.charAt(5) + readMessage.charAt(6) + " ");
                         ((TextView) getView().findViewById(R.id.r4temp)).setText(" " + readMessage.charAt(7) + readMessage.charAt(8) + " ");
                         ((TextView) getView().findViewById(R.id.textView16)).setText("Room 1: " + readMessage.charAt(10) + readMessage.charAt(11) + " and " + readMessage.charAt(23) + readMessage.charAt(24) + " degrees");
